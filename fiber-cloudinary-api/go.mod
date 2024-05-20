@@ -1,19 +1,22 @@
 module fiber-cloudinary-api
 
-go 1.22.2
+go 1.22
+
+require (
+	github.com/cloudinary/cloudinary-go v1.7.0
+	github.com/go-playground/validator/v10 v10.20.0
+	github.com/gofiber/fiber/v2 v2.52.4
+	github.com/joho/godotenv v1.5.1
+)
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
-	github.com/cloudinary/cloudinary-go v1.7.0 // indirect
 	github.com/creasty/defaults v1.7.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.20.0 // indirect
-	github.com/gofiber/fiber/v2 v2.52.4 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/schema v1.3.0 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/klauspost/compress v1.17.8 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect

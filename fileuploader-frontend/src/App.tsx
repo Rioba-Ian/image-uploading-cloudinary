@@ -17,7 +17,7 @@ const App: Component = () => {
   formData.append("file", file);
 
   try {
-   const res = await fetch("http://localhost:8080/api", {
+   const res = await fetch("http://localhost:8080/file", {
     method: "POST",
     body: formData,
    });
