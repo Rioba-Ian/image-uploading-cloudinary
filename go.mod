@@ -1,6 +1,6 @@
 module fiber-cloudinary-api
 
-go 1.22
+go 1.21
 
 require (
 	github.com/cloudinary/cloudinary-go v1.7.0
