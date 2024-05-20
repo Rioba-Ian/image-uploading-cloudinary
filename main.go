@@ -21,5 +21,5 @@ func main() {
 	app.Post("/file", controllers.FileUpload)
 	app.Post("/remote", controllers.RemoteUpload)
 
-	app.Listen(":8080")
+	app.Listen(":8000")
 }
