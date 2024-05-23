@@ -15,37 +15,44 @@ export function useUploadFile({
 
  async function uploadFile(file: File) {
   setIsUploading(true);
+  const promise = async () => {
+   try {
+    const formData = new FormData();
+    formData.append("file", file);
 
-  try {
-   const formData = new FormData();
-   formData.append("file", file);
+    const response = await fetch(
+     "https://living-merrie-rioba-ian-a8872d45.koyeb.app/file",
+     {
+      method: "POST",
+      body: formData,
+     }
+    );
 
-   const response = await fetch(
-    "https://living-merrie-rioba-ian-a8872d45.koyeb.app/file",
-    {
-     method: "POST",
-     body: formData,
+    if (!response.ok) {
+     throw new Error(`HTTP error ${response.status}`);
     }
-   );
 
-   if (!response.ok) {
-    throw new Error(`HTTP error ${response.status}`);
+    const data = await response.json();
+    const uploadedFile: UploadedFile = {
+     name: file.name,
+     type: file.type,
+     size: file.size,
+     url: data.data.data,
+    };
+
+    setUploadedFiles((prev) => [...prev, uploadedFile]);
+   } catch (err) {
+    if (err instanceof Error) toast.error(err.message);
+   } finally {
+    setIsUploading(false);
    }
+  };
 
-   const data = await response.json();
-   const uploadedFile: UploadedFile = {
-    name: file.name,
-    type: file.type,
-    size: file.size,
-    url: data.data.data,
-   };
-
-   setUploadedFiles((prev) => [...prev, uploadedFile]);
-  } catch (err) {
-   if (err instanceof Error) toast.error(err.message);
-  } finally {
-   setIsUploading(false);
-  }
+  toast.promise(promise(), {
+   loading: `Uploading ${file.name}...`,
+   success: `${file.name} uploaded successfully`,
+   error: `Failed to upload ${file.name}`,
+  });
  }
 
  return { uploadedFiles, uploadFile, isUploading };

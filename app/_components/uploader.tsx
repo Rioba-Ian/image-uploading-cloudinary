@@ -11,13 +11,16 @@ export function BasicUploaderDemo() {
 
  return (
   <div className="space-y-6">
-   <FileUploader
-    maxFiles={1} // Set maxFiles to 1 since your API allows uploading one file at a time
-    maxSize={4 * 1024 * 1024}
-    onUpload={async (files) => files.forEach(uploadFile)} // Call uploadFile for each file
-    disabled={isUploading}
-   />
-   <UploadedFilesCard uploadedFiles={uploadedFiles} />
+   {uploadedFiles.length > 0 ? (
+    <UploadedFilesCard uploadedFiles={uploadedFiles} />
+   ) : (
+    <FileUploader
+     maxFiles={1} // Set maxFiles to 1 since your API allows uploading one file at a time
+     maxSize={4 * 1024 * 1024}
+     onUpload={async (files) => files.forEach(uploadFile)} // Call uploadFile for each file
+     disabled={isUploading}
+    />
+   )}
   </div>
  );
 }
