@@ -8,6 +8,7 @@ import Dropzone, {
  type FileRejection,
 } from "react-dropzone";
 import { toast } from "sonner";
+import { ImageUp } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -214,14 +215,14 @@ export default function FileUploader(props: FileUploaderProps) {
       ) : (
        <div className="flex flex-col items-center justify-center gap-4 sm:px-5">
         <div className="rounded-full border border-dashed p-3">
-         <UploadIcon
-          className="size-7 text-muted-foreground"
+         <ImageUp
+          className="size-12 text-muted-foreground"
           aria-hidden="true"
          />
         </div>
         <div className="space-y-px">
          <p className="font-medium text-muted-foreground">
-          Drag {`'n'`} drop files here, or click to select files
+          Drag {`'n'`} drop images here, or click to select files
          </p>
          <p className="text-sm text-muted-foreground/70">
           You can upload
