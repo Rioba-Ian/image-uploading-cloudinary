@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({ style: "normal", weight: ["400", "600", "800"] });
+const poppins = Poppins({
+ style: "normal",
+ weight: ["400", "600", "800"],
+ subsets: [],
+});
 
 export const metadata: Metadata = {
  title: "Upload Images",
